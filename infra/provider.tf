@@ -10,12 +10,12 @@ terraform {
     bucket         = "clover-dashboard-tfstate"
     key            = "terraform.tfstate"
     region         = "eu-west-1"
-    dynamodb_table = "clover-dashboard-tfstate-lock"
+    use_lockfile = true
     encrypt        = true
   }
 }
 
 provider "aws" {
   region  = var.aws_region
-  profile = "clover"
+  profile = "soulfuldelights"
 }
