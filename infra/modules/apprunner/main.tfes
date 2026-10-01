@@ -17,6 +17,7 @@ resource "aws_apprunner_service" "app" {
 
     auto_deployments_enabled = false
   }
+
 }
 
 resource "aws_iam_role" "apprunner_role" {
