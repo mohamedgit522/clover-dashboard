@@ -1,16 +1,22 @@
+import boto3
 import requests
 from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
 MERCHANT_ID = "WVG7DPHJ6P9F1"
-API_TOKEN = "f40d507d-0235-8e9b-cd4c-1fd996d1a190"
+
+def get_api_token():
+    client = boto3.client("secretsmanager", region_name="eu-west-1")
+    response = client.get_secret_value(SecretId="clover/api-token")
+    return response["SecretString"]
 
 def get_employees():
+    api_token = get_api_token()
     url = f"https://apisandbox.dev.clover.com/v3/merchants/{MERCHANT_ID}/employees"
     headers = {
         "accept": "application/json",
-        "authorization": f"Bearer {API_TOKEN}"
+        "authorization": f"Bearer {api_token}"
     }
     response = requests.get(url, headers=headers)
     data = response.json()
