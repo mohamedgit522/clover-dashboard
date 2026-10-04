@@ -26,6 +26,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::415368001330:role/github-actions-clover-dashboard
+          role-session-name: GitHubActionsSession
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to ECR
