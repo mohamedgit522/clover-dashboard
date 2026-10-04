@@ -55,3 +55,4 @@ jobs:
           curl --fail https://nwe7dhrcj3.eu-west-1.awsapprunner.com || exit 1
 # trigger
 # debug test
+# sts tag session fix
