@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: eu-west-1
   ECR_REPOSITORY: clover-dashboard
-  APP_RUNNER_SERVICE_ARN: arn:aws:apprunner:eu-west-1:415368001330:service/clover-dashboard/a8787b0926f94b2aaa30603620a2474b
+  APP_RUNNER_SERVICE_ARN: arn:aws:apprunner:eu-west-1:415368001330:service/clover-dashboard/95412c7861b842cbb2fd4d8180425c47
 
 permissions:
   id-token: write
@@ -51,4 +51,4 @@ jobs:
       - name: Verify deployment
         run: |
           sleep 30
-          curl --fail https://6ppnupxkq8.eu-west-1.awsapprunner.com || exit 1
+          curl --fail https://nwe7dhrcj3.eu-west-1.awsapprunner.com || exit 1
