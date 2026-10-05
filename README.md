@@ -10,28 +10,30 @@ The business owner was manually collecting staff hours from Clover POS each week
 
 ## Architecture
 
+```
 Clover API
-│
-▼
+    │
+    ▼
 Flask App (Python)
-│ fetches token at runtime
-▼
+    │  fetches token at runtime
+    ▼
 AWS Secrets Manager
-│
-▼
+    │
+    ▼
 Docker Container (linux/amd64)
-│
-▼
+    │
+    ▼
 AWS ECR
-│
-▼
-AWS App Runner ◄── IAM Instance Role
-│
-▼
+    │
+    ▼
+AWS App Runner  ◄── IAM Instance Role
+    │
+    ▼
 Route 53 + ACM (HTTPS)
-│
-▼
+    │
+    ▼
 https://payroll.soulfulpayroll.co.uk
+```
 
 
 ### Infrastructure modules (Terraform)
