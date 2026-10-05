@@ -79,27 +79,29 @@ AWS credentials are supplied via GitHub repository secrets.
 
 ## Repository Structure
 
+```
 clover-dashboard/
 ├── app/
-│ ├── app.py # Flask application
-│ └── requirements.txt # Python dependencies
+│   ├── app.py                  # Flask application
+│   └── requirements.txt        # Python dependencies
 ├── infra/
-│ ├── main.tf # Root module
-│ ├── variables.tf
-│ ├── outputs.tf
-│ ├── provider.tf # AWS provider + S3 backend
-│ ├── terraform.tfvars # Variable values (gitignored)
-│ └── modules/
-│ ├── ecr/
-│ ├── apprunner/
-│ ├── acm/
-│ └── route53/
+│   ├── main.tf                 # Root module
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── provider.tf             # AWS provider + S3 backend
+│   ├── terraform.tfvars        # Variable values (gitignored)
+│   └── modules/
+│       ├── ecr/
+│       ├── apprunner/
+│       ├── acm/
+│       └── route53/
 ├── .github/
-│ └── workflows/
-│ └── deploy.yml # CI/CD pipeline
+│   └── workflows/
+│       └── deploy.yml          # CI/CD pipeline
 ├── Dockerfile
 ├── .dockerignore
 └── README.md
+```
 
 ---
 
