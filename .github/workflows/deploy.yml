@@ -40,9 +40,15 @@ jobs:
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
             --push .
-
+    
+  
       - name: Deploy to App Runner
         run: |
           aws apprunner start-deployment \
             --service-arn ${{ vars.APP_RUNNER_SERVICE_ARN }} \
             --region ${{ env.AWS_REGION }}
+
+      - name: Verify deployment
+        run: |
+          sleep 60
+          curl --fail --retry 10 --retry-delay 15 --retry-all-errors ${{ vars.APP_URL }}
