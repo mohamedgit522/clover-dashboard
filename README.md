@@ -98,8 +98,7 @@ clover-dashboard/
 │       ├── apprunner/
 │       ├── acm/
 │       └── route53/
-├── docs/
-│   └── architecture.png
+├──  architecture.png
 ├── .github/workflows/
 │   └── deploy.yml
 ├── Dockerfile
