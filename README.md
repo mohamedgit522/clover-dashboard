@@ -6,7 +6,7 @@ Each week, the business owner was collecting staff hours from Clover POS by hand
 
 **Status:** The infrastructure is torn down between working sessions to avoid paying for idle resources. Everything can be rebuilt from this repository with Terraform and the GitHub Actions workflow.
 
-![Architecture](docs/architecture.png)
+![Architecture](architecture.png)
 
 ---
 
@@ -194,6 +194,7 @@ In the repository settings, add:
 
 - Secret `AWS_ROLE_ARN`: the ARN of the `clover-dashboard-github-deploy` role
 - Variable `APP_RUNNER_SERVICE_ARN`: the ARN of the App Runner service
+- Variable APP_URL: the custom domain URL used for the post-deploy health check
 
 Update the trust policy's `sub` condition in `modules/apprunner/main.tf` if you fork the repository, so it matches your own `repo:<owner>/<repo>:ref:refs/heads/main`.
 
