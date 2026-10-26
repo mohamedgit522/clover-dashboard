@@ -8,7 +8,6 @@ on:
 env:
   AWS_REGION: eu-west-1
   ECR_REPOSITORY: clover-dashboard
-  APP_RUNNER_SERVICE_ARN: arn:aws:apprunner:eu-west-1:415368001330:service/clover-dashboard/95412c7861b842cbb2fd4d8180425c47
 
 permissions:
   id-token: write
@@ -22,11 +21,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
+      - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to ECR
@@ -46,15 +44,10 @@ jobs:
       - name: Deploy to App Runner
         run: |
           aws apprunner start-deployment \
-            --service-arn ${{ env.APP_RUNNER_SERVICE_ARN }} \
+            --service-arn ${{ vars.APP_RUNNER_SERVICE_ARN }} \
             --region ${{ env.AWS_REGION }}
 
       - name: Verify deployment
         run: |
           sleep 30
-          curl --fail https://nwe7dhrcj3.eu-west-1.awsapprunner.com || exit 1
-# trigger
-# debug test
-# sts tag session fix
-# recreated role test
-# fix credentials
+          curl --fail https://dashboard.soulfuldeli.com || exit 1
